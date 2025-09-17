@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { CheckCircle, Shield, Zap, Users, FileText, Clock, Award, ArrowRight } from "lucide-react"
+import Image from "next/image"
+import Logo from '../../public/futura_logo.jpeg'
 
 export default function Futura100Landing() {
   const scrollToContact = () => {
@@ -17,13 +19,15 @@ export default function Futura100Landing() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90 sticky top-0 z-50">
+      <header className="border-b border-border bg-[oklch(0.96_0_0)] backdrop-blur supports-[backdrop-filter]:bg-[oklch(0.96_0_0)] sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">F100</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">FUTURA100</span>
+            <Image 
+              src={Logo}
+              height={100}
+              width={200}
+              alt="Logo Futura100"
+            />
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">
