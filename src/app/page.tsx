@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { CheckCircle, Shield, Zap, Users, FileText, Clock, Award, ArrowRight } from "lucide-react"
 import Image from "next/image"
-import Logo from '../../public/futura_logo.jpeg'
+import Logo from '../../public/Logo Sin Fondo - Futura100.png'
 
 export default function Futura100Landing() {
   const scrollToContact = () => {
@@ -26,46 +26,47 @@ export default function Futura100Landing() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2 flex-shrink-0 mr-30">
-            <Image
-              src={Logo}
-              height={150}
-              width={300}
-              alt="Logo Futura100"
-            />
-          </div>
-          <div className="flex items-center space-x-8 ml-auto">
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors text-s">
-                Características
-              </a>
-              <a href="#benefits" className="text-gray-600 hover:text-gray-900 transition-colors text-s">
-                Beneficios
-              </a>
-              <a href="#contact-form" className="text-gray-600 hover:text-gray-900 transition-colors text-s">
-                Contacto
-              </a>
-            </nav>
+      <header className="border-b border-border bg-[oklch(0.96_0_0)] backdrop-blur 
+supports-[backdrop-filter]:bg-white/90 fixed top-0 w-full z-50 h-16">
+  <div className="container mx-auto px-4 flex items-center justify-between h-full">
+    <div className="flex items-center space-x-2 flex-shrink-0">
+      <Image
+        src={Logo}
+        alt="Logo Futura100"
+        className="h-45 w-auto object-contain" // más grande sin romper el header
+        priority
+      />
+    </div>
+    <div className="flex items-center space-x-8 ml-auto">
+      <nav className="hidden md:flex items-center space-x-8">
+        <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+          Características
+        </a>
+        <a href="#benefits" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+          Beneficios
+        </a>
+        <a href="#contact-form" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+          Contacto
+        </a>
+      </nav>
+      <div className="flex items-center space-x-3">
+        <Button
+          onClick={openWhatsApp}
+          className="bg-[#3dbdbb] hover:bg-[#35a8a6] text-white text-sm px-4 py-2"
+        >
+          Escribinos al WhatsApp
+        </Button>
+        <Button
+          onClick={scrollToContact}
+          className="bg-[#3dbdbb] hover:bg-[#35a8a6] text-white text-sm px-4 py-2"
+        >
+          Comenzar Ahora
+        </Button>
+      </div>
+    </div>
+  </div>
+</header>
 
-            <div className="flex items-center space-x-3">
-              <Button
-                onClick={openWhatsApp}
-                className="bg-[#3dbdbb] hover:bg-[#35a8a6] text-white text-sm px-4 py-2"
-              >
-                Escribinos al WhatsApp
-              </Button>
-              <Button
-                onClick={scrollToContact}
-                className="bg-[#3dbdbb] hover:bg-[#35a8a6] text-white text-sm px-4 py-2"
-              >
-                Comenzar Ahora
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-background via-card to-background">
@@ -401,11 +402,13 @@ export default function Futura100Landing() {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">F100</span>
-                </div>
-                <span className="text-xl font-bold">FUTURA100</span>
+              <div className="flex items-center space-x-2">
+               <Image 
+                src={Logo}
+                alt="Logo Futura100"
+                className="h-35 w-auto object-contain" // más grande sin romper el header
+                priority
+               />
               </div>
               <p className="text-gray-300">La solución de facturación electrónica más completa del Paraguay.</p>
             </div>
