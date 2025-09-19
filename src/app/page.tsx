@@ -16,58 +16,79 @@ export default function Futura100Landing() {
 
   const endoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || ""
 
+  const openWhatsApp = () => {
+    const phoneNumber = "595992460600" // Número sin espacios ni símbolos
+    const message = "Hola, me interesa conocer más sobre FUTURA100 y sus servicios de facturación electrónica."
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, "_blank")
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-[oklch(0.96_0_0)] backdrop-blur supports-[backdrop-filter]:bg-[oklch(0.96_0_0)] sticky top-0 z-50">
+      <header className="border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Image 
+          <div className="flex items-center space-x-2 flex-shrink-0 mr-30">
+            <Image
               src={Logo}
-              height={100}
-              width={200}
+              height={150}
+              width={300}
               alt="Logo Futura100"
             />
           </div>
-          <nav className="hidden md:flex items-center space-x-6">
-            <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Características
-            </a>
-            <a href="#benefits" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Beneficios
-            </a>
-            <a href="#contact-form" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Contacto
-            </a>
-          </nav>
-          <Button onClick={scrollToContact} className="bg-blue-600 hover:bg-blue-700 text-white">
-            Comenzar Ahora
-          </Button>
+          <div className="flex items-center space-x-8 ml-auto">
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors text-s">
+                Características
+              </a>
+              <a href="#benefits" className="text-gray-600 hover:text-gray-900 transition-colors text-s">
+                Beneficios
+              </a>
+              <a href="#contact-form" className="text-gray-600 hover:text-gray-900 transition-colors text-s">
+                Contacto
+              </a>
+            </nav>
+
+            <div className="flex items-center space-x-3">
+              <Button
+                onClick={openWhatsApp}
+                className="bg-[#3dbdbb] hover:bg-[#35a8a6] text-white text-sm px-4 py-2"
+              >
+                Escribinos al WhatsApp
+              </Button>
+              <Button
+                onClick={scrollToContact}
+                className="bg-[#3dbdbb] hover:bg-[#35a8a6] text-white text-sm px-4 py-2"
+              >
+                Comenzar Ahora
+              </Button>
+            </div>
+          </div>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-background via-card to-background">
         <div className="container mx-auto text-center max-w-4xl">
-          <Badge className="mb-6 bg-blue-100 text-blue-800 border-blue-200">
-            #1 en Facturación Electrónica Paraguay
+          <Badge className="mb-6 bg-[#fbb524] text-black border-blue-200">
+            #1 en Facturación Electrónica
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 text-balance">
-            La solución de <span className="text-blue-600">Facturación Electrónica</span> más completa del Paraguay
+            La solución de <span className="text-[#fbb524]">Facturación Electrónica</span> más completa del Paraguay
           </h1>
           <p className="text-xl text-gray-700 mb-8 text-pretty max-w-2xl mx-auto">
-            Somos los primeros facturadores electrónicos del país operando desde el 2019. Mejora los procesos de
-            información y disminuye considerablemente los gastos de tu empresa.
+            Somos los primeros facturadores electrónicos del país operando desde el 2019. Optimizá tus procesos y reducí
+            significativamente los costos operativos de tu empresa con Futura100
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={scrollToContact} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button onClick={scrollToContact} size="lg" className="bg-[#3dbdbb] hover:bg-[#35a8a6] text-white">
               Solicitar Más Información
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent"
+              className="border-[#fbb524] bg-[#fbb524] text-black hover:bg-amber-500"
               onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
             >
               Ver Características
@@ -76,16 +97,16 @@ export default function Futura100Landing() {
           {/* ... existing stats section ... */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="bg-blue-50 p-6 rounded-lg">
-              <div className="text-3xl font-bold text-blue-600">2019</div>
-              <div className="text-gray-600">Operando desde</div>
+              <div className="text-3xl font-bold text-[#fbb524]">2019</div>
+              <div className="text-gray-600">6 años brindando soluciones</div>
             </div>
             <div className="bg-blue-50 p-6 rounded-lg">
-              <div className="text-3xl font-bold text-blue-600">3 en 1</div>
+              <div className="text-3xl font-bold text-[#fbb524]">3 en 1</div>
               <div className="text-gray-600">Proveedores integrados</div>
             </div>
             <div className="bg-blue-50 p-6 rounded-lg">
-              <div className="text-3xl font-bold text-blue-600">100%</div>
-              <div className="text-gray-600">Seguro y confiable</div>
+              <div className="text-3xl font-bold text-[#fbb524]">100%</div>
+              <div className="text-gray-600">Seguro y con validez legal</div>
             </div>
           </div>
         </div>
@@ -99,7 +120,9 @@ export default function Futura100Landing() {
               ¿Por qué las empresas eligen FUTURA100?
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              Somos 3 proveedores en UNO. Una solución integral para todas tus necesidades de facturación electrónica.
+              Porque ofrecemos una solución integral: somos 3 proveedores en uno, con todo lo que
+              tu empresa necesita para gestionar la facturación electrónica de forma simple, segura
+              y eficiente 
             </p>
           </div>
 
@@ -107,7 +130,7 @@ export default function Futura100Landing() {
             <Card className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="h-6 w-6 text-blue-600" />
+                  <Shield className="h-6 w-6 text-[#fbb524]" />
                 </div>
                 <CardTitle className="text-gray-900">Certificados de Firma Electrónica</CardTitle>
                 <CardDescription className="text-gray-600">
@@ -119,7 +142,7 @@ export default function Futura100Landing() {
             <Card className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="h-6 w-6 text-blue-600" />
+                  <FileText className="h-6 w-6 text-[#fbb524]" />
                 </div>
                 <CardTitle className="text-gray-900">FACTURA100</CardTitle>
                 <CardDescription className="text-gray-600">
@@ -131,7 +154,7 @@ export default function Futura100Landing() {
             <Card className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="h-6 w-6 text-blue-600" />
+                  <Zap className="h-6 w-6 text-[#fbb524]" />
                 </div>
                 <CardTitle className="text-gray-900">DATAFLOW</CardTitle>
                 <CardDescription className="text-gray-600">
@@ -143,7 +166,7 @@ export default function Futura100Landing() {
             <Card className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-blue-600" />
+                  <Users className="h-6 w-6 text-[#fbb524]" />
                 </div>
                 <CardTitle className="text-gray-900">CODESIGN</CardTitle>
                 <CardDescription className="text-gray-600">
@@ -155,7 +178,7 @@ export default function Futura100Landing() {
             <Card className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Clock className="h-6 w-6 text-blue-600" />
+                  <Clock className="h-6 w-6 text-[#fbb524]" />
                 </div>
                 <CardTitle className="text-gray-900">Integración Rápida</CardTitle>
                 <CardDescription className="text-gray-600">
@@ -167,7 +190,7 @@ export default function Futura100Landing() {
             <Card className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Award className="h-6 w-6 text-blue-600" />
+                  <Award className="h-6 w-6 text-[#fbb524]" />
                 </div>
                 <CardTitle className="text-gray-900">Experiencia Comprobada</CardTitle>
                 <CardDescription className="text-gray-600">
@@ -192,7 +215,7 @@ export default function Futura100Landing() {
 
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-[#fbb524] mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-gray-900">Reducción de Costos</h3>
                     <p className="text-gray-600">Disminuye considerablemente los gastos operativos de tu empresa</p>
@@ -200,7 +223,7 @@ export default function Futura100Landing() {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-[#fbb524] mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-gray-900">Mejora de Procesos</h3>
                     <p className="text-gray-600">Optimiza los procesos de información y gestión documental</p>
@@ -208,7 +231,7 @@ export default function Futura100Landing() {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-[#fbb524] mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-gray-900">Cumplimiento Legal</h3>
                     <p className="text-gray-600">Garantiza el cumplimiento de todas las normativas paraguayas</p>
@@ -216,7 +239,7 @@ export default function Futura100Landing() {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-[#fbb524] mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-gray-900">Soporte Especializado</h3>
                     <p className="text-gray-600">Acompañamiento en la transformación digital de tu empresa</p>
@@ -228,7 +251,7 @@ export default function Futura100Landing() {
             <div className="relative">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 border border-blue-200">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-[#3dbdbb] rounded-full flex items-center justify-center mx-auto mb-6">
                     <Shield className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Confianza y Seguridad Digital</h3>
@@ -236,7 +259,7 @@ export default function Futura100Landing() {
                     Code100 es una empresa de Software dedicada al desarrollo y comercialización de soluciones
                     informáticas orientadas a empresas y organizaciones.
                   </p>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">Conocer Más</Button>
+                  <Button className="bg-[#3dbdbb] hover:bg-blue-700 text-white">Conocer Más</Button>
                 </div>
               </div>
             </div>
@@ -245,7 +268,7 @@ export default function Futura100Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-blue-600">
+      <section className="py-20 px-4 bg-[#3dbdbb]">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">¿Listo para digitalizar tu empresa?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -257,14 +280,14 @@ export default function Futura100Landing() {
               onClick={scrollToContact}
               size="lg"
               variant="secondary"
-              className="bg-white text-blue-600 hover:bg-gray-100"
+              className="bg-[#fbb524] text-black hover:bg-gray-100"
             >
               Solicitar Demostración
             </Button>
             <Button
               onClick={scrollToContact}
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
+              className="border-2 border-[#fbb524] text-gray-100 hover:bg-[#fbb524] bg-transparent"
             >
               Contactar Ventas
             </Button>
@@ -362,7 +385,7 @@ export default function Futura100Landing() {
                 </div>
 
                 <div className="text-center">
-                  <Button type="submit" size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
+                  <Button type="submit" size="lg" className="bg-[#fbb524] border-[#fbb524] hover:bg-gray-300 text-black px-8">
                     Enviar Solicitud
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
