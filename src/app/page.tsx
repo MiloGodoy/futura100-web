@@ -8,8 +8,75 @@ import { Textarea } from "@/components/ui/textarea"
 import { CheckCircle, Shield, Zap, Users, FileText, Clock, Award, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Logo from '../../public/Logo Sin Fondo - Futura100.png'
+import { useEffect, useRef, useState } from "react"
+
+function useCountUp(end: number, duration = 2000) {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => observer.disconnect()
+  }, [isVisible])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    let startTime: number
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 20)
+
+      setCount(Math.floor(progress * end))
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [isVisible, end, duration])
+
+  return { count, ref }
+}
 
 export default function Futura100Landing() {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  const { count: companyCount, ref: companyRef } = useCountUp(615, 2500)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHeaderVisible(false)
+      } else {
+        setIsHeaderVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
+
+
   const scrollToContact = () => {
     document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })
   }
@@ -101,10 +168,10 @@ supports-[backdrop-filter]:bg-white/90 fixed top-0 w-full z-50 h-16">
               <div className="text-3xl font-bold text-[#fbb524]">2019</div>
               <div className="text-gray-600">6 años brindando soluciones</div>
             </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <div className="text-3xl font-bold text-[#fbb524]">3 en 1</div>
-              <div className="text-gray-600">Proveedores integrados</div>
-            </div>
+            <div className="bg-blue-50 p-6 rounded-lg" ref={companyRef}>
+                <div className="text-3xl font-bold text-[#fbb524]">{companyCount}+</div>
+                <div className="text-gray-600">Empresas confían en nosotros</div>
+              </div>
             <div className="bg-blue-50 p-6 rounded-lg">
               <div className="text-3xl font-bold text-[#fbb524]">100%</div>
               <div className="text-gray-600">Seguro y con validez legal</div>
